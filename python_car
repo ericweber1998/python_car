@@ -1,0 +1,201 @@
+import random
+rando_list = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+              "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
+              "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7",
+              "8", "9", "0", "@", "#", "$", "%", "&", "*"]
+
+lineA = "*"*10
+lineB = "≈"*20
+first_gear = False
+second_gear = False
+third_gear = False
+fourth_gear = False
+reverse_gear = False
+engine_on = False
+# gear_display = ""
+seatbelt_on = False
+dash_center = "H"
+
+
+
+
+enter_car = input("PRESS ANY BUTTON TO ENTER\n::")
+while enter_car:
+    turn_key = input(f"\n{lineB*3}\n\n\tSEAT BELT ON: {seatbelt_on}\n\nPRESS 'b' TO BUCKLE UP\nPRESS 'k' TO START CAR\n"
+                     f"PRESS 'd' TO UNBUCKLE\nPRESS 'x' TO LEAVE\n\n::")
+    if turn_key.upper() == "K":
+        engine_on = True
+    elif turn_key.upper() == "B":
+        seatbelt_on = True
+    elif turn_key.upper() == "D":
+        seatbelt_on = False
+    elif turn_key.upper() == "X":
+        enter_car = ""
+
+    if seatbelt_on:
+        if engine_on:
+            sesscode_list = []
+            counter = 0
+            print("\nENGINE ON")
+
+            # If you want these variables to retain their value after the car has been stopped
+            # ,then move these to the outside of the while enter_car
+            neu_gear = True
+            hd_light = "OFF"
+            ac_on = False
+            heat_on = False
+            ac_display = ""
+            pause = " II "
+            play = " |> "
+            pa_pl = pause
+            vol_lvl = 0
+
+
+            while engine_on:
+                ##########################
+                rando = [random.choice(rando_list)+random.choice(rando_list)+random.choice(rando_list)+
+                random.choice(rando_list)+random.choice(rando_list)+random.choice(rando_list)+random.choice(rando_list)
+                +random.choice(rando_list)]
+
+                sesscode_list.append(rando)
+                counter += 1
+
+                if neu_gear:
+                    gear_display = "NEU0"
+                    dash_center = "0"
+                elif first_gear:
+                    gear_display = "ONE1"
+                    dash_center = "#"
+                elif second_gear:
+                    gear_display = "TWO2"
+                    dash_center = "@"
+                elif third_gear:
+                    gear_display = "THE3"
+                    dash_center = "%"
+                elif fourth_gear:
+                    gear_display = "FOU4"
+                    dash_center = "$"
+                elif reverse_gear:
+                    gear_display = "REVR"
+                    dash_center = "&"
+
+
+
+
+                action = input(f'\n\n\n\n\n\n\n\n\n\n\n\n{lineB*3}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
+                               f'{"^v"*5}-->Sess.Code {counter}-->{rando}-->{"^v"*7}\n\n'
+                               f'[GEAR BOX]~[{gear_display}]      {dash_center}    {dash_center}\t'
+                               f'\t[TEMPERATURE]~[{ac_display}]'
+                               f'\n[VOLUME] : {vol_lvl}                  \t\t[HEADLIGHTS] {hd_light}'
+                               f'     \n[{pa_pl}]                 {dash_center*6}\n\n\n\n'
+                               f'\t|{"-"*20}|\n'
+                               f'\t|"e  - STOP CAR      |\n'
+                               f'\t|"s" - SWITCH GEARS  |\n'
+                               f'\t|"c" - TURN ON AC    |\n'
+                               f'\t|"h" - TURN ON HEAT  |\n'
+                               f'\t|"v" - CHANGE VOLUME |\n'
+                               f'\t|"p" - PAUSE / PLAY  |\n'
+                               f'\t|"l" - TOGGLE LIGHTS |\n'
+                               f'\t|{"-"*20}|\n\n::')
+                if action.upper() == "E":
+                    engine_on = False
+                elif action.upper() == "S":
+                    gear_select = input(f'\n{lineA}SELECT A GEAR{lineB}\n\n(N)\n(1)\t(2)\n(3)\t(4)\n\t(R)\n\n::')
+                    if gear_select == "1":
+                        if not first_gear:
+                            print('\nCAR IS IN FIRST GEAR')
+                            first_gear = True
+                            second_gear = False
+                            third_gear = False
+                            fourth_gear = False
+                            reverse_gear = False
+                            neu_gear = False
+                        else:
+                            print("\nYOUR CAR IS ALREADY IN FIRST GEAR")
+                    elif gear_select == "2":
+                        if not second_gear:
+                            print('\nCAR IS IN SECOND GEAR')
+                            first_gear = False
+                            second_gear = True
+                            third_gear = False
+                            fourth_gear = False
+                            reverse_gear = False
+                            neu_gear = False
+                        else:
+                            print("\nYOUR CAR IS ALREADY IN SECOND GEAR")
+                    elif gear_select == "3":
+                        if not third_gear:
+                            print('\nCAR IS IN THIRD GEAR')
+                            first_gear = False
+                            second_gear = False
+                            third_gear = True
+                            fourth_gear = False
+                            reverse_gear = False
+                            neu_gear = False
+                        else:
+                            print("\nYOUR CAR IS ALREADY IN THIRD GEAR")
+                    elif gear_select == "4":
+                        if not fourth_gear:
+                            print('\nCAR IS IN FOURTH GEAR')
+                            first_gear = False
+                            second_gear = False
+                            third_gear = False
+                            fourth_gear = True
+                            reverse_gear = False
+                            neu_gear = False
+                        else:
+                            print("\nYOUR CAR IS ALREADY IN FOURTH GEAR")
+                    elif gear_select.upper() == "R":
+                        if not reverse_gear:
+                            print('\nCAR IS IN REVERSE')
+                            first_gear = False
+                            second_gear = False
+                            third_gear = False
+                            fourth_gear = False
+                            reverse_gear = True
+                            neu_gear = False
+                    elif gear_select.upper() == "N":
+                        if not neu_gear:
+                            print('\nCAR IS IN NEUTRAL')
+                            first_gear = False
+                            second_gear = False
+                            third_gear = False
+                            fourth_gear = False
+                            reverse_gear = False
+                            neu_gear = True
+                        else:
+                            print("\nYOUR CAR IS ALREADY IN NEUTRAL")
+                    else:
+                        print(f'GEAR DOES NOT COMPUTE ^V^V^V^v')
+                elif action.upper() == "C":
+                    ac_display = " C O L D "
+
+                elif action.upper() == "H":
+                    ac_display = " H O T "
+
+                elif action.upper() == "V":
+                    volume = int(input("Desired Volume (0 - 30): "))
+                    if volume > 30:
+                        vol_lvl = 30
+                    else:
+                        vol_lvl = volume
+                elif action.upper() == "P":
+                    if pa_pl == pause:
+                        pa_pl = play
+                    else:
+                        pa_pl = pause
+                elif action.upper() == "L":
+                    if hd_light == "OFF":
+                        hd_light = "ON"
+                    else:
+                        hd_light = "OFF"
+            ############################
+            print(f"\n\n\n\nPREV {len(sesscode_list)} SESSION CODES BELOW:")
+            for element in sesscode_list:
+                print(element)
+            # print(f"Session Codes:cnt: {len(hash_list)} :{hash_list}")
+    else:
+        engine_on = False
+        print(f"{lineA}BUCKLE UP FIRST{lineB}")
+if not engine_on:
+    print("Goodbye")
